@@ -33,17 +33,15 @@ pipeline {
         }
 
         stage('Build') {
-            steps {
-                echo "Building version ${APP_VERSION} for ${params.ENVIRONMENT} environment"
-                bat '''
-                    echo Simulating build process...
-                    if not exist build mkdir build
-                    *.js build
-                    echo Build completed successfully!
-                    echo App version: %APP_VERSION% > build\\version.txt
-                '''
-            }
-        }
+    steps {
+        echo 'Building version 1.0.3 for dev environment'
+        bat 'echo Simulating build process...'
+        bat 'if not exist build mkdir build'
+        bat '*.js build'
+        bat 'echo Build completed successfully!'
+        bat 'echo App version: 1.0.3 > build\\version.txt'
+    }
+}
 
         stage('Test') {
             when {
@@ -82,6 +80,7 @@ pipeline {
         }
     }
 }
+
 
 
 
