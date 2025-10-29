@@ -32,12 +32,13 @@ pipeline {
             }
         }
 
-        stage('Build') {
+stage('Build') {
     steps {
         echo 'Building version 1.0.3 for dev environment'
         bat 'echo Simulating build process...'
         bat 'if not exist build mkdir build'
-        bat '*.js build'
+        // Replace the invalid line:
+        bat 'echo (Pretending to build JS files...)'
         bat 'echo Build completed successfully!'
         bat 'echo App version: 1.0.3 > build\\version.txt'
     }
@@ -80,6 +81,7 @@ pipeline {
         }
     }
 }
+
 
 
 
